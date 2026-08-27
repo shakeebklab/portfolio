@@ -4,6 +4,15 @@ aside .avatar {
   aspect-ratio: 1;
 }
 
+/* The adjacent sections share one visual gap instead of stacking both paddings. */
+#experience {
+  padding-bottom: 52px;
+}
+
+#contact {
+  padding-top: 52px;
+}
+
 @media (min-width: 1001px) and (max-width: 1300px) {
   section {
     padding-inline: clamp(28px, 4vw, 48px);
@@ -87,5 +96,15 @@ aside .avatar {
 
   aside .drawer-socials {
     margin-top: 9px;
+  }
+}
+
+@media (max-width: 620px) {
+  #experience {
+    padding-bottom: 36px;
+  }
+
+  #contact {
+    padding-top: 36px;
   }
 }
