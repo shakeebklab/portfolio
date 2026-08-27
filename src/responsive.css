@@ -99,7 +99,41 @@ aside .avatar {
   }
 }
 
+@media (max-width: 1000px) {
+  .drawer-toggle {
+    z-index: 40;
+  }
+
+  .drawer-toggle.is-open {
+    background: #0b3042;
+    border-color: #08adf0;
+    color: #fff;
+  }
+
+  aside .menu.close {
+    display: none;
+  }
+}
+
 @media (max-width: 620px) {
+  .hero-photo {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+  }
+
+  .hero-photo img {
+    position: absolute;
+    top: 50%;
+    right: -8%;
+    width: auto !important;
+    max-width: none !important;
+    height: 128% !important;
+    object-fit: contain;
+    object-position: center;
+    transform: translateY(-50%) !important;
+  }
+
   #experience {
     padding-bottom: 36px;
   }
