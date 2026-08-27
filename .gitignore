@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.tools/
+node.zip
+
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+.netlify/
+.env
+.env.*
+!.env.example
+
+.DS_Store
+Thumbs.db
+*.log
