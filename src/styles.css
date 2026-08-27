@@ -22,6 +22,120 @@ body{font-family:Poppins,Arial,sans-serif}
 @media(max-width:1000px){.hero-copy{width:88vw;margin-left:-5%}.hero-photo{right:-7%;width:58vw;opacity:.72}.hero h1{white-space:normal}}
 @media(max-width:620px){.hero-copy{width:82%;margin:112px 0 0 -8%;padding:0}.hero-photo{right:-18%;top:43%;width:70%;height:74%;opacity:.6}.hero h1{font-size:31px;white-space:normal}.hero h2{font-size:29px;min-height:2.3em;margin:4px 0 18px}.hero-button{margin-bottom:25px}}
 
+/* Keep project banners visible when the animated card surface changes on hover. */
+.projects .project-art,
+.projects .project-card:hover .project-art,
+.project-modal .modal-art{
+  border:2px solid transparent!important;
+  background-image:
+    var(--project-banner),
+    conic-gradient(from var(--border-angle),#102d3a 0 68%,#087fae 76%,#6ae5ff 82%,#0a86ba 88%,#102d3a 96% 100%)!important;
+  background-position:center,center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-size:cover,100% 100%!important;
+  background-origin:padding-box,border-box!important;
+  background-clip:padding-box,border-box!important;
+}
+.projects .project-art:after,.project-modal .modal-art:after{display:none}
+.projects .project-art{animation:border-orbit 4.2s linear infinite}
+.projects .project-card:hover .project-art,
+.projects .project-card:focus-visible .project-art{
+  animation:border-orbit 1.8s linear infinite;
+}
+
+/* Sidebar social buttons: the design uses a visible blue surface at rest. */
+aside .social .drawer-socials a,
+aside .social .drawer-socials a:link,
+aside .social .drawer-socials a:visited{
+  background:#102d3c!important;
+  background-image:none!important;
+  border-color:transparent!important;
+}
+aside .social .drawer-socials a:hover,
+aside .social .drawer-socials a:focus-visible{
+  background:#177faa!important;
+}
+
+/* Project artwork supplied in ref_video. */
+.project-art.art1,.modal-art.art1{--project-banner:url('../ref_video/wajba.png')}
+.project-art.art2,.modal-art.art2{--project-banner:url('../ref_video/siin.png')}
+.project-art.art3,.modal-art.art3{--project-banner:url('../ref_video/visit_bahrain.png')}
+.project-art.art4,.modal-art.art4{--project-banner:url('../ref_video/aljunobya.png')}
+.project-art[class*="art"],.modal-art[class*="art"]{
+  --border-angle:0deg;
+  border:2px solid transparent!important;
+  background-image:
+    var(--project-banner),
+    conic-gradient(from var(--border-angle),#102d3a 0 68%,#087fae 76%,#6ae5ff 82%,#0a86ba 88%,#102d3a 96% 100%)!important;
+  background-position:center,center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-size:cover,100% 100%!important;
+  background-origin:padding-box,border-box!important;
+  background-clip:padding-box,border-box!important;
+  padding:0;
+}
+.project-art .mock-phone,.modal-art .mock-phone{display:none}
+
+/* Final animated CTA border override. */
+.hero .hero-button,.contact-card .button.primary{--border-angle:0deg;border:1px solid transparent!important;background:linear-gradient(120deg,rgba(255,255,255,.14),rgba(255,255,255,.03) 38%,transparent 62%) padding-box,linear-gradient(135deg,#151719,#050607 58%,#000) padding-box,conic-gradient(from var(--border-angle),#343b3f 0 68%,#aeb8bd 77%,#fff 82%,#aeb8bd 87%,#343b3f 96% 100%) border-box!important;color:#fff!important;animation:border-orbit 4.2s linear infinite!important;box-shadow:inset 0 1px rgba(255,255,255,.1)!important}
+.hero .hero-button:hover,.hero .hero-button:focus-visible,.contact-card .button.primary:hover,.contact-card .button.primary:focus-visible{border-color:transparent!important;background:radial-gradient(ellipse 85% 72% at 0 0,rgba(20,156,218,.38),rgba(8,91,134,.14) 42%,transparent 72%) padding-box,linear-gradient(135deg,#101416,#050708 58%,#000) padding-box,conic-gradient(from var(--border-angle),#173946 0 68%,#168dc0 77%,#74ddff 82%,#168dc0 87%,#173946 96% 100%) border-box!important;color:#fff!important;transform:translateY(-3px)!important;box-shadow:0 10px 28px rgba(0,174,240,.15),inset 0 1px rgba(255,255,255,.12)!important}
+
+/* Final animated CTA border override. */
+.hero .hero-button,.contact-card .button.primary{--border-angle:0deg;border:1px solid transparent!important;background:linear-gradient(120deg,rgba(255,255,255,.14),rgba(255,255,255,.03) 38%,transparent 62%) padding-box,linear-gradient(135deg,#151719,#050607 58%,#000) padding-box,conic-gradient(from var(--border-angle),#343b3f 0 68%,#aeb8bd 77%,#fff 82%,#aeb8bd 87%,#343b3f 96% 100%) border-box!important;color:#fff!important;animation:border-orbit 4.2s linear infinite!important;box-shadow:inset 0 1px rgba(255,255,255,.1)!important}
+.hero .hero-button:hover,.hero .hero-button:focus-visible,.contact-card .button.primary:hover,.contact-card .button.primary:focus-visible{border-color:transparent!important;background:radial-gradient(ellipse 85% 72% at 0 0,rgba(20,156,218,.38),rgba(8,91,134,.14) 42%,transparent 72%) padding-box,linear-gradient(135deg,#101416,#050708 58%,#000) padding-box,conic-gradient(from var(--border-angle),#173946 0 68%,#168dc0 77%,#74ddff 82%,#168dc0 87%,#173946 96% 100%) border-box!important;color:#fff!important;transform:translateY(-3px)!important;box-shadow:0 10px 28px rgba(0,174,240,.15),inset 0 1px rgba(255,255,255,.12)!important}
+
+/* Definitive CTA treatment. */
+.hero .hero-button,
+.contact-card .button.primary{
+  --border-angle:0deg;
+  border:1px solid transparent!important;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.14),rgba(255,255,255,.03) 38%,transparent 62%) padding-box,
+    linear-gradient(135deg,#151719,#050607 58%,#000) padding-box,
+    conic-gradient(from var(--border-angle),#343b3f 0 68%,#aeb8bd 77%,#fff 82%,#aeb8bd 87%,#343b3f 96% 100%) border-box!important;
+  color:#fff!important;
+  animation:border-orbit 4.2s linear infinite!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.1)!important;
+}
+.hero .hero-button:hover,
+.hero .hero-button:focus-visible,
+.contact-card .button.primary:hover,
+.contact-card .button.primary:focus-visible{
+  border-color:transparent!important;
+  background:
+    radial-gradient(ellipse 85% 72% at 0 0,rgba(20,156,218,.38),rgba(8,91,134,.14) 42%,transparent 72%) padding-box,
+    linear-gradient(135deg,#101416,#050708 58%,#000) padding-box,
+    conic-gradient(from var(--border-angle),#173946 0 68%,#168dc0 77%,#74ddff 82%,#168dc0 87%,#173946 96% 100%) border-box!important;
+  color:#fff!important;
+  transform:translateY(-3px)!important;
+  box-shadow:0 10px 28px rgba(0,174,240,.15),inset 0 1px rgba(255,255,255,.12)!important;
+}
+
+/* Final CTA states: white at rest, blue on hover/focus. */
+.hero .hero-button,
+.contact-card .button.primary{
+  border:1px solid rgba(255,255,255,.55)!important;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 38%,transparent 62%) padding-box,
+    linear-gradient(135deg,#151719 0%,#050607 58%,#000 100%) padding-box!important;
+  color:#fff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12)!important;
+  transition:transform .3s ease,background .3s ease,border-color .3s ease,color .3s ease,box-shadow .3s ease!important;
+}
+
+.hero .hero-button:hover,
+.hero .hero-button:focus-visible,
+.contact-card .button.primary:hover,
+.contact-card .button.primary:focus-visible{
+  border-color:rgba(70,202,255,.65)!important;
+  background:
+    radial-gradient(ellipse 85% 72% at 0% 0%,rgba(20,156,218,.38) 0%,rgba(8,91,134,.14) 42%,transparent 72%) padding-box,
+    linear-gradient(135deg,#101416 0%,#050708 58%,#000 100%) padding-box!important;
+  color:#fff!important;
+  transform:translateY(-4px);
+  box-shadow:0 10px 28px rgba(0,174,240,.15),inset 0 1px 0 rgba(255,255,255,.14)!important;
+}
+
 /* Final CTA states: keep these after the legacy button overrides above. */
 .hero-button:hover,
 .hero-button:focus-visible{
@@ -301,10 +415,11 @@ aside nav{gap:4px}
 aside nav a{min-height:42px;padding:9px 10px;border-radius:4px;color:#f4f7f9;background:transparent}
 aside nav a svg{width:19px;height:19px;color:#079ee3;stroke-width:1.65}
 aside nav a.active,aside nav a:hover{background:linear-gradient(90deg,#072b3e,#062437);color:#079ff0}
-aside .social{border-top:1px solid #0d3447;padding-top:42px}
-aside .social>b{font-size:16px;color:#f4f8fa}
-aside .drawer-socials{gap:8px;margin-top:16px}
-aside .drawer-socials a{width:40px;height:40px;flex-basis:40px;border:0!important;background:#1b4052!important;color:#f4f8fa!important;box-shadow:inset 0 1px rgba(255,255,255,.05)}
+aside .social{border-top:1px solid #0d3447;padding-top:38px}
+aside .social>b{display:block;font-size:16px;line-height:22px;color:#f4f8fa}
+aside .drawer-socials{gap:8px;margin-top:14px}
+aside .drawer-socials a{width:40px;height:40px;flex:0 0 40px;border:0!important;background:#102a39!important;color:#f4f8fa!important;box-shadow:none}
+aside .drawer-socials a svg{width:16px!important;height:16px!important}
 aside .drawer-socials a:hover{background:linear-gradient(135deg,#177faa,#0b4d69)!important}
 .feature-grid article,.timeline article,.project-art,.contact-card{
   border-color:transparent!important;

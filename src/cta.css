@@ -1,0 +1,65 @@
+.hero .hero-button,
+.contact-card .button.primary{
+  --border-angle:0deg;
+  border:1px solid transparent!important;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.14),rgba(255,255,255,.03) 38%,transparent 62%) padding-box,
+    linear-gradient(135deg,#151719,#050607 58%,#000) padding-box,
+    conic-gradient(from var(--border-angle),#343b3f 0 68%,#aeb8bd 77%,#fff 82%,#aeb8bd 87%,#343b3f 96% 100%) border-box!important;
+  color:#fff!important;
+  animation:border-orbit 4.2s linear infinite!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.1)!important;
+}
+
+.hero .hero-button:hover,
+.hero .hero-button:focus-visible,
+.contact-card .button.primary:hover,
+.contact-card .button.primary:focus-visible{
+  border-color:transparent!important;
+  background:
+    radial-gradient(ellipse 85% 72% at 0 0,rgba(20,156,218,.38),rgba(8,91,134,.14) 42%,transparent 72%) padding-box,
+    linear-gradient(135deg,#101416,#050708 58%,#000) padding-box,
+    conic-gradient(from var(--border-angle),#173946 0 68%,#168dc0 77%,#74ddff 82%,#168dc0 87%,#173946 96% 100%) border-box!important;
+  color:#fff!important;
+  transform:translateY(-3px)!important;
+  box-shadow:0 10px 28px rgba(0,174,240,.15),inset 0 1px rgba(255,255,255,.12)!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-button,.contact-card .button.primary{animation:none!important}
+}
+
+/* Send Message buttons use the site's primary color in both forms. */
+.contact-card .button.primary,
+.chat-dialog form button{
+  --border-angle:0deg;
+  min-height:52px;
+  border:1px solid transparent!important;
+  border-radius:999px!important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  background:linear-gradient(135deg,#151b1f,#0a1014) padding-box,conic-gradient(from var(--border-angle),#68747a 0 70%,#f5f7f8 80%,#8b969b 88%,#68747a 100%) border-box!important;
+  color:#e9edf0!important;
+  animation:border-orbit 4.2s linear infinite!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.04)!important;
+}
+.contact-card .button.primary svg{display:none}
+.contact-card .button.primary:after,.chat-dialog form button:after{content:'→';font-size:21px;line-height:1;transition:transform .25s ease}
+.contact-card .button.primary:hover:after,.chat-dialog form button:hover:after{transform:translateX(3px)}
+
+.contact-card .button.primary:hover,
+.contact-card .button.primary:focus-visible,
+.chat-dialog form button:hover,
+.chat-dialog form button:focus-visible{
+  border-color:transparent!important;
+  background:radial-gradient(ellipse 75% 90% at 0 0,rgba(8,173,240,.18),transparent 68%) padding-box,linear-gradient(135deg,#151b1f,#0a1014) padding-box,conic-gradient(from var(--border-angle),#68747a 0 68%,#8de7ff 79%,#fff 84%,#68747a 94% 100%) border-box!important;
+  color:#fff!important;
+  box-shadow:0 8px 22px rgba(8,173,240,.12),inset 0 1px rgba(255,255,255,.06)!important;
+}
+
+.form-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important}
+.form-status{min-height:20px;margin:0;color:#8edfff;font-size:13px;line-height:1.4}
+.chat-dialog .form-status{min-height:0;text-align:center}
+.contact-card button:disabled,.chat-dialog button:disabled{cursor:wait;opacity:.7}
