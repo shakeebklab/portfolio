@@ -1,0 +1,84 @@
+/* Laptop layout overrides. Loaded last so older component rules cannot win. */
+aside .avatar {
+  flex-shrink: 0;
+  aspect-ratio: 1;
+}
+
+@media (min-width: 1001px) and (max-width: 1300px) {
+  section {
+    padding-inline: clamp(28px, 4vw, 48px);
+  }
+
+  .projects {
+    grid-template-columns: minmax(0, 760px);
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .projects .project-card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .project-art {
+    width: 100%;
+    height: auto;
+    min-height: 390px;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (min-width: 1001px) and (max-height: 760px) {
+  aside {
+    padding-block: 24px;
+  }
+
+  aside .avatar {
+    flex-basis: 132px;
+    width: 132px;
+    min-width: 132px;
+    height: 132px;
+    min-height: 132px;
+    margin-bottom: 20px;
+  }
+
+  aside nav {
+    gap: 2px;
+  }
+
+  aside nav a {
+    min-height: 38px;
+    padding-block: 7px;
+  }
+
+  aside .social {
+    padding-top: 20px;
+  }
+}
+
+@media (min-width: 1001px) and (max-height: 620px) {
+  aside {
+    padding-block: 16px;
+  }
+
+  aside .avatar {
+    flex-basis: 104px;
+    width: 104px;
+    min-width: 104px;
+    height: 104px;
+    min-height: 104px;
+    margin-bottom: 12px;
+  }
+
+  aside nav a {
+    min-height: 34px;
+    padding-block: 5px;
+  }
+
+  aside .social {
+    padding-top: 12px;
+  }
+
+  aside .drawer-socials {
+    margin-top: 9px;
+  }
+}
