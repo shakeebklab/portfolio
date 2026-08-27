@@ -128,9 +128,11 @@ aside .avatar {
     right: -8%;
     width: auto !important;
     max-width: none !important;
-    height: 128% !important;
+    /* Keep the previous close portrait, with just enough room for the
+       forehead and chin to remain inside the mobile hero frame. */
+    height: 118% !important;
     object-fit: contain;
-    object-position: center;
+    object-position: center center;
     transform: translateY(-50%) !important;
   }
 
