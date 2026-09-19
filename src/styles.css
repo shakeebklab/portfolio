@@ -58,11 +58,10 @@ aside .social .drawer-socials a:focus-visible{
 
 /* Project artwork supplied in ref_video. */
 .project-art.art1,.modal-art.art1{--project-banner:url('../ref_video/wajba.png')}
-.project-art.art2,.modal-art.art2{--project-banner:url('../ref_video/siin.png')}
-.project-art.art3,.modal-art.art3{--project-banner:url('../ref_video/visit_bahrain.png')}
-.project-art.art4,.modal-art.art4{--project-banner:url('../ref_video/aljunobya.png')}
-.project-art.art5,.modal-art.art5{--project-banner:url('../ref_video/faza_clients.png')}
-.project-art.art6,.modal-art.art6{--project-banner:url('../ref_video/faza_vendor.png')}
+.project-art.art2,.modal-art.art2{--project-banner:url('../ref_video/visit_bahrain.png')}
+.project-art.art3,.modal-art.art3{--project-banner:url('../ref_video/aljunobya.png')}
+.project-art.art4,.modal-art.art4{--project-banner:url('../ref_video/faza_clients.png')}
+.project-art.art5,.modal-art.art5{--project-banner:url('../ref_video/faza_vendor.png')}
 .project-art[class*="art"],.modal-art[class*="art"]{
   --border-angle:0deg;
   border:2px solid transparent!important;
