@@ -7,6 +7,8 @@ import linkedInIcon from '../icons/LinkedIN_white.svg';
 import mailIcon from '../icons/Mail_white.svg';
 import phoneIcon from '../icons/Phone_white.svg';
 import whatsAppIcon from '../icons/WhatsApp_white.svg';
+import dashboardBanner from '../ref_video/dashboard.png';
+import webBanner from '../ref_video/website.png';
 import avatarImage from '../ref_video/image.png';
 import profileImage from '../ref_video/transparent_profile.png';
 import experienceImage from '../ref_video/experience.png';
@@ -14,8 +16,10 @@ import experienceImage from '../ref_video/experience.png';
 const nav=[['home','Home',Home],['features','Features',Layers3],['skills','Skills',Code2],['portfolio','Portfolio',BriefcaseBusiness],['experience','Experience',BriefcaseBusiness],['contact','Contact',MessageCircle]] as const;
 const reveal={initial:{opacity:0,y:35},whileInView:{opacity:1,y:0},viewport:{once:true,amount:.15},transition:{duration:.65}};
 const features=[['01.','Flutter Applications','Pixel-accurate Android and iOS products built from one maintainable codebase.',Smartphone],['02.','Scalable Architecture','Bloc, Riverpod, Provider, GetX and MVVM patterns that grow with the product.',Code2],['03.','Product Integrations','REST APIs, Firebase, maps, payments, analytics and real-time features.',Database]] as const;
-type Project={name:string;banner:string;category:string;type:'app'|'web';summary:string;detail:string;playStore:string;appStore:string};
-const work:Project[]=[];
+type Project={name:string;banners:string[];category:string;type:'app'|'web';summary:string;detail:string;website?:string;playStore?:string;appStore?:string};
+const work:Project[]=[
+  {name:'SMA Collections',banners:[webBanner,dashboardBanner],category:'E-Commerce Website & Admin Dashboard',type:'web',summary:'A premium online storefront for discovering and shopping curated watches and footwear.',detail:'A complete e-commerce platform featuring a responsive customer storefront and an administration dashboard for managing products, inventory, orders, customers and analytics.',website:'https://customer-store.customer-store.workers.dev/'}
+];
 const skills=[
   ['Core Mobile Development','Flutter, Dart, cross-platform mobile development, Android Studio and VS Code.'],
   ['State Management & Architecture','Bloc, Riverpod, Provider, GetX, MVVM and MVC.'],
@@ -59,10 +63,20 @@ function Socials({drawer=false}:{drawer?:boolean}){const names=drawer?['Instagra
 function ScrollProgress(){const[progress,setProgress]=useState(0);useEffect(()=>{let frame=0;const update=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?Math.min(1,Math.max(0,window.scrollY/max)):0)})};update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);return()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',update);window.removeEventListener('resize',update)}},[]);return <button className="scroll-progress" style={{'--scroll-fill':`${progress*100}%`} as React.CSSProperties} onClick={()=>window.scrollTo({top:0,behavior:'smooth'})} aria-label={`Scroll progress ${Math.round(progress*100)} percent. Back to top`}><span className="scroll-water" aria-hidden="true"/><ArrowUp aria-hidden="true"/></button>}
 function Title({overline,children,text}:{overline:string,children:React.ReactNode,text?:string}){return <motion.header className="section-title" {...reveal}><span>{overline}</span><h2>{children}</h2>{text&&<p>{text}</p>}</motion.header>}
 function ProjectArtwork({project,index}:{project:Project;index:number}){
-  const[loaded,setLoaded]=useState(false);
-  return <div className={`project-art art${index+1} ${loaded?'is-loaded':'is-loading'}`}>
-    <span className="image-loader" role="status" aria-label={`Loading ${project.name} image`}/>
-    <img src={project.banner} alt={`${project.name} project preview`} onLoad={()=>setLoaded(true)} onError={()=>setLoaded(true)}/>
+  useEffect(()=>{
+    if(!project.website)return;
+    const openWebsite=(event:MouseEvent)=>{
+      if((event.target as HTMLElement).closest('.project-modal .modal-view'))window.open(project.website,'_blank','noopener,noreferrer');
+    };
+    document.addEventListener('click',openWebsite);
+    return()=>document.removeEventListener('click',openWebsite);
+  },[project.website]);
+  return <div className={`project-art art${index+1} is-loaded`}>
+    <a className="project-banner-link" href={project.website} target="_blank" rel="noreferrer" onClick={event=>event.stopPropagation()} aria-label={`Visit ${project.name} website`}>
+      <div className="project-banner-track">
+        {project.banners.map((banner,bannerIndex)=><img src={banner} alt={`${project.name} ${bannerIndex===0?'website':'dashboard'} preview`} key={banner}/>) }
+      </div>
+    </a>
   </div>;
 }
 function Sidebar({open,close}:{open:boolean,close:()=>void}){return <aside className={open?'open':''}><button className="menu close" onClick={close}><X/></button><a className="avatar" href="#home" onClick={close}><img src={avatarImage} alt="Syed Muhammad Shakeeb"/><span>SMS</span></a><nav>{nav.map(([id,label,Icon])=><a href={'#'+id} key={id} onClick={close}><Icon/><span>{label}</span></a>)}</nav><div className="social"><b>Find With Me</b><Socials drawer/></div></aside>}

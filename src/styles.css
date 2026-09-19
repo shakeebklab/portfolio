@@ -4,6 +4,32 @@
 @media(max-width:620px){section{padding:80px 20px}.hero{min-height:844px;align-items:flex-end;padding-bottom:105px}.hero-copy{padding:0 22px;margin:0}.hero h1{font-size:48px;letter-spacing:-2px}.hero h2{font-size:25px}.hero-copy>p:not(.kicker){font-size:15px}.portrait{width:100%;height:58%;top:15px;right:-25%;opacity:.42}.phone{height:380px;width:190px}.orbit.one{width:310px;height:310px}.orbit.two{width:420px;height:420px}.actions{flex-wrap:wrap}.section-title{margin-bottom:38px}.feature-grid,.projects,.timeline,.contact-card{grid-template-columns:1fr}.feature-grid article{padding:28px}.projects article:nth-child(even){margin-top:0}.project-art{height:300px}.mock-phone{height:250px;width:125px}.project-info h3{font-size:23px}.timeline article:first-child{grid-row:auto}.contact-card{padding:34px 24px;gap:35px}.contact-card h2{font-size:35px}.contact-card form{grid-template-columns:1fr}.contact-card label{grid-column:1/-1}footer{margin:0 20px 25px;padding:30px 18px}.top{right:18px;bottom:18px;width:46px;height:46px}.marquee{margin-inline:-20px}.scroll{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+/* Portfolio banners can be panned to inspect the full-width artwork. */
+.projects .project-art{
+  display:block;
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#09baf9 #06131b;
+}
+.projects .project-art>img,
+.projects .project-art>.project-image-link,
+.projects .project-art>.project-image-link>img{
+  position:relative;
+  inset:auto;
+  display:block;
+  width:auto;
+  max-width:none;
+  height:100%;
+  min-height:100%;
+  object-fit:contain;
+}
+.projects .project-art>.project-image-link{width:max-content}
+.projects .project-art>.project-image-link>img{opacity:0;transition:opacity .35s ease}
+.projects .project-art.is-loaded>.project-image-link>img{opacity:1}
+.project-modal .modal-view{display:none}
+.projects .project-info small{font-size:0}
+.projects .project-info small:after{content:'WEB DEVELOPMENT';font-size:12px}
+
 /* Home video fidelity fixes */
 body{font-family:Poppins,Arial,sans-serif}
 .hero{justify-content:center}
@@ -21,6 +47,14 @@ body{font-family:Poppins,Arial,sans-serif}
 
 @media(max-width:1000px){.hero-copy{width:88vw;margin-left:-5%}.hero-photo{right:-7%;width:58vw;opacity:.72}.hero h1{white-space:normal}}
 @media(max-width:620px){.hero-copy{width:82%;margin:112px 0 0 -8%;padding:0}.hero-photo{right:-18%;top:43%;width:70%;height:74%;opacity:.6}.hero h1{font-size:31px;white-space:normal}.hero h2{font-size:29px;min-height:2.3em;margin:4px 0 18px}.hero-button{margin-bottom:25px}}
+
+/* Final project artwork behavior: pan wide banners without cropping them. */
+.projects .project-art{display:block!important;overflow:auto!important;scrollbar-width:thin;scrollbar-color:#09baf9 #06131b}
+.projects .project-art>img,.projects .project-art>.project-image-link,.projects .project-art>.project-image-link>img{position:relative!important;inset:auto!important;display:block;width:auto!important;max-width:none!important;height:100%!important;min-height:100%;object-fit:contain!important}
+.projects .project-art>.project-image-link{width:max-content!important}
+.projects .project-art>.project-image-link>img{opacity:0;transition:opacity .35s ease}
+.projects .project-art.is-loaded>.project-image-link>img{opacity:1}
+.project-modal .modal-view{display:none}
 
 /* Keep project banners visible when the animated card surface changes on hover. */
 .projects .project-art,
