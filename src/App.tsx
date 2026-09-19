@@ -7,11 +7,6 @@ import linkedInIcon from '../icons/LinkedIN_white.svg';
 import mailIcon from '../icons/Mail_white.svg';
 import phoneIcon from '../icons/Phone_white.svg';
 import whatsAppIcon from '../icons/WhatsApp_white.svg';
-import wajbaBanner from '../ref_video/wajba.png';
-import visitBahrainBanner from '../ref_video/visit_bahrain.png';
-import aljunobyaBanner from '../ref_video/aljunobya.png';
-import fazaClientsBanner from '../ref_video/faza_clients.png';
-import fazaVendorBanner from '../ref_video/faza_vendor.png';
 import avatarImage from '../ref_video/image.png';
 import profileImage from '../ref_video/transparent_profile.png';
 import experienceImage from '../ref_video/experience.png';
@@ -19,13 +14,8 @@ import experienceImage from '../ref_video/experience.png';
 const nav=[['home','Home',Home],['features','Features',Layers3],['skills','Skills',Code2],['portfolio','Portfolio',BriefcaseBusiness],['experience','Experience',BriefcaseBusiness],['contact','Contact',MessageCircle]] as const;
 const reveal={initial:{opacity:0,y:35},whileInView:{opacity:1,y:0},viewport:{once:true,amount:.15},transition:{duration:.65}};
 const features=[['01.','Flutter Applications','Pixel-accurate Android and iOS products built from one maintainable codebase.',Smartphone],['02.','Scalable Architecture','Bloc, Riverpod, Provider, GetX and MVVM patterns that grow with the product.',Code2],['03.','Product Integrations','REST APIs, Firebase, maps, payments, analytics and real-time features.',Database]] as const;
-const work=[
-  {name:'Wajba',banner:wajbaBanner,category:'Food Rescue & Delivery',type:'app',summary:'A mobile-first food rescue and delivery experience that connects surplus meals with people who need them.',detail:'Built as a polished cross-platform product with reliable ordering flows, real-time updates and scalable API integrations.',playStore:'https://play.google.com/store/apps/details?id=com.wajba.app&hl=en',appStore:'https://apps.apple.com/us/app/wajba-save-fresh-meals/id6740336691'},
-  {name:'Visit Bahrain',banner:visitBahrainBanner,category:'Travel & Tourism',type:'app',summary:'A destination discovery experience for exploring attractions, culture and memorable journeys across Bahrain.',detail:'Responsive presentation, structured destination content and intuitive navigation make trip planning simple on every screen.',playStore:'https://play.google.com/store/apps/details?id=com.btea.tg&hl=en',appStore:'https://apps.apple.com/us/app/visit-bahrain/id1136770500'},
-  {name:'Aljunobya',banner:aljunobyaBanner,category:'Digital Government',type:'app',summary:'A clear digital-services platform that makes public information and essential citizen journeys easier to access.',detail:'Designed for clarity and trust with responsive interfaces, accessible content patterns and dependable integrations.',playStore:'https://play.google.com/store/apps/details?id=com.klabs.southerngovernorate&hl=en',appStore:'https://apps.apple.com/us/app/aljunobya/id1480147210'},
-  {name:'Faz3a Client',banner:fazaClientsBanner,category:'On-Demand Services',type:'app',summary:'A convenient mobile marketplace that helps customers discover and request trusted services when they need them.',detail:'Built for a smooth customer journey with clear service discovery, streamlined requests and dependable cross-platform performance.',playStore:'https://play.google.com/store/apps/details?id=com.faz3a.client&hl=en',appStore:'https://apps.apple.com/us/app/faz3a-%D9%81%D8%B2%D8%B9%D8%A9/id6469709038'},
-  {name:'Faz3a Vendor',banner:fazaVendorBanner,category:'Service Provider Platform',type:'app',summary:'A dedicated vendor experience for receiving requests, managing services and staying connected with customers.',detail:'Designed to keep service providers productive with focused workflows, timely updates and reliable job management on the go.',playStore:'https://play.google.com/store/apps/details?id=com.faz3a.vendor',appStore:'https://apps.apple.com/pk/app/faz3a-vendor/id6469776211'}
-] as const;
+type Project={name:string;banner:string;category:string;type:'app'|'web';summary:string;detail:string;playStore:string;appStore:string};
+const work:Project[]=[];
 const skills=[
   ['Core Mobile Development','Flutter, Dart, cross-platform mobile development, Android Studio and VS Code.'],
   ['State Management & Architecture','Bloc, Riverpod, Provider, GetX, MVVM and MVC.'],
@@ -68,7 +58,7 @@ const socialLinks:Record<string,string>={Instagram:'https://www.instagram.com/sy
 function Socials({drawer=false}:{drawer?:boolean}){const names=drawer?['Instagram','LinkedIn','Twitter','WhatsApp']:['Instagram','LinkedIn','GitHub','Email','WhatsApp'];return <div className={`socials ${drawer?'drawer-socials':'home-socials'}`}>{names.map(name=><a href={socialLinks[name]} target={name==='Email'||name==='Phone'?'_self':'_blank'} rel="noreferrer" aria-label={name} key={name}>{!drawer&&socialIcons[name]?<img src={socialIcons[name]} alt=""/>:<BrandIcon name={name}/>}</a>)}</div>}
 function ScrollProgress(){const[progress,setProgress]=useState(0);useEffect(()=>{let frame=0;const update=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?Math.min(1,Math.max(0,window.scrollY/max)):0)})};update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);return()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',update);window.removeEventListener('resize',update)}},[]);return <button className="scroll-progress" style={{'--scroll-fill':`${progress*100}%`} as React.CSSProperties} onClick={()=>window.scrollTo({top:0,behavior:'smooth'})} aria-label={`Scroll progress ${Math.round(progress*100)} percent. Back to top`}><span className="scroll-water" aria-hidden="true"/><ArrowUp aria-hidden="true"/></button>}
 function Title({overline,children,text}:{overline:string,children:React.ReactNode,text?:string}){return <motion.header className="section-title" {...reveal}><span>{overline}</span><h2>{children}</h2>{text&&<p>{text}</p>}</motion.header>}
-function ProjectArtwork({project,index}:{project:(typeof work)[number];index:number}){
+function ProjectArtwork({project,index}:{project:Project;index:number}){
   const[loaded,setLoaded]=useState(false);
   return <div className={`project-art art${index+1} ${loaded?'is-loaded':'is-loading'}`}>
     <span className="image-loader" role="status" aria-label={`Loading ${project.name} image`}/>
