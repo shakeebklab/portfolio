@@ -29,21 +29,31 @@
 
 .project-banner-track {
   display: flex;
-  width: 200%;
+  width: 100%;
   height: 100%;
-  animation: project-banner-slide 10s ease-in-out infinite;
 }
 
 .project-banner-track img {
   position: static !important;
   display: block !important;
-  width: 50% !important;
-  max-width: 50% !important;
+  width: 100% !important;
+  max-width: 100% !important;
   height: 100% !important;
   min-height: 0 !important;
-  flex: 0 0 50%;
+  flex: 0 0 100%;
   object-fit: cover !important;
   opacity: 1 !important;
+}
+
+.project-banner-track.is-gallery {
+  width: 200%;
+  animation: project-banner-slide 10s ease-in-out infinite;
+}
+
+.project-banner-track.is-gallery img {
+  width: 50% !important;
+  max-width: 50% !important;
+  flex-basis: 50%;
 }
 
 @keyframes project-banner-slide {
@@ -56,23 +66,33 @@
   .project-banner-track { animation: none; }
 }
 
-.modal-art.art1 {
-  background-image: url('../ref_video/website.png') !important;
+.project-modal .modal-view {
+  display: inline-flex !important;
+}
+
+.modal-art {
   background-position: center !important;
   background-size: cover !important;
 }
 
-.project-modal .modal-view {
-  display: inline-flex !important;
-}
+.modal-art.art1 { background-image: url('../ref_video/savebite.png') !important; }
+.modal-art.art2 { background-image: url('../ref_video/roamora.png') !important; }
+.modal-art.art3 { background-image: url('../ref_video/nomad_coast.png') !important; }
+.modal-art.art4 { background-image: url('../ref_video/tasknest.png') !important; }
+.modal-art.art5 { background-image: url('../ref_video/government_services.png') !important; }
+.modal-art.art6 { background-image: url('../ref_video/website.png') !important; }
 
 .projects .project-info small {
   font-size: 0;
 }
 
 .projects .project-info small::after {
-  content: 'WEB DEVELOPMENT';
+  content: 'APP DEVELOPMENT';
   font-size: 12px;
+}
+
+.projects .project-card:nth-child(6) .project-info small::after {
+  content: 'WEB DEVELOPMENT';
 }
 
 @media (max-width: 760px) {
